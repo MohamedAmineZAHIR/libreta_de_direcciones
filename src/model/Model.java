@@ -56,4 +56,14 @@ public class Model
 	public void update(String first_name, String family_name, String column, String value){
 		adsl.Requete("UPDATE contacts SET " + column + "='"+value+"' WHERE first_name='"+first_name+"' AND family_name='"+family_name+"'");
 	}
+	
+	
+	/**
+	 * 
+	 * @param first_name
+	 * @param family_name
+	 */
+	public void delete(String first_name, String family_name){
+		adsl.Requete("DELETE FROM contacts WHERE first_name='"+first_name+"' AND family_name='"+family_name+"'");
+	}
 }
