@@ -7,7 +7,7 @@ import zma.Dbo;
 
 public class Model 
 {
-	public Dbo adsl = new Dbo("jdbc:mysql://localhost/adress_book", "com.mysql.jdbc.Driver", "root", "");
+	public Dbo adsl;
 	
 	public Model() {
 		super();
@@ -47,5 +47,13 @@ public class Model
 			return adsl.Extract("SELECT * FROM contacts WHERE first_name='"+first_name+"' AND family_name='"+family_name+"'");
 		else
 			return adsl.Extract("SELECT * FROM contacts WHERE family_name='"+family_name+"'");
+	}
+	
+	
+	/**
+	 * 
+	 */
+	public void update(String first_name, String family_name, String column, String value){
+		adsl.Requete("UPDATE contacts SET " + column + "='"+value+"' WHERE first_name='"+first_name+"' AND family_name='"+family_name+"'");
 	}
 }
