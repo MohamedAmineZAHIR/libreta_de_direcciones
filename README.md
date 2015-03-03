@@ -13,8 +13,28 @@ Carnet d'adresses, est une application web, qui informatise l'enregistrement des
 
 Outils:
 -------
- * JAVA/JEE
- * HTML
- * MySQL
+ • JAVA/JEE
+ • HTML
+ • MySQL
 
- * MVC
+ • MVC
+
+
+Structure 
+---------
+Le projet est structuré de la façon suivante :
+	src/
+		controler/
+			• Controler.java          
+		model/
+			• Model.java              
+    
+    webContent/
+    	• index.html -------------------> le point d'entrée
+    	• delete.html
+    	• find.html
+    	• update.html
+    	• save.html
+    	• show_contacts.jsp
+
+    screen_shot/ -----------------------> Ce projet contient des images -captures d'écran- pour voir en gros à quoi ressemble le résultat finale
