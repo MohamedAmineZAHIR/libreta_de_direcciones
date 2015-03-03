@@ -1,3 +1,7 @@
+/**
+ * @author MohamedAmine
+ */
+
 package zma;
 
 import java.io.IOException;
@@ -29,6 +33,7 @@ public class Controler extends HttpServlet {
 		super();
 	}
 	
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -38,34 +43,35 @@ public class Controler extends HttpServlet {
 		out = response.getWriter();
 		
 		switch (request.getParameter("submit")) {
-		case "Enregistrer":
-			model.save_contact(request.getParameter("first_name"), 
-					request.getParameter("family_name"), 
-					request.getParameter("adress"), 
-					request.getParameter("phone"));
+			case "Enregistrer":
+				model.save_contact(request.getParameter("first_name"), 
+						request.getParameter("family_name"), 
+						request.getParameter("adress"), 
+						request.getParameter("phone"));
+				
+				response.sendRedirect("index.html");
+				break;
+				
+			case "Chercher":
+				request.setAttribute("contacts", model.find_contact(request.getParameter("first_name"), request.getParameter("family_name")));
+				request.getServletContext().getRequestDispatcher("/show_contacts.jsp").forward(request,response);
+				break;
+				
+			case "Mise à jour":
+				model.update(request.getParameter("first_name"), request.getParameter("family_name"), 
+						request.getParameter("column"), request.getParameter("value"));
+				response.sendRedirect("index.html");
+				break;
 			
-			response.sendRedirect("index.html");
-			break;
-			
-		case "Chercher":
-			request.setAttribute("contacts", model.find_contact(request.getParameter("first_name"), request.getParameter("family_name")));
-			request.getServletContext().getRequestDispatcher("/show_contacts.jsp").forward(request,response);
-			break;
-			
-		case "Mise à jour":
-			model.update(request.getParameter("first_name"), request.getParameter("family_name"), 
-					request.getParameter("column"), request.getParameter("value"));
-			response.sendRedirect("index.html");
-			break;
-		
-		case "Supprimer":
-			model.delete(request.getParameter("first_name"), request.getParameter("family_name"));
-			response.sendRedirect("index.html");
-			
-		default:
-			break;
+			case "Supprimer":
+				model.delete(request.getParameter("first_name"), request.getParameter("family_name"));
+				response.sendRedirect("index.html");
+				
+			default:
+				break;
 		}
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -77,26 +83,30 @@ public class Controler extends HttpServlet {
 		out = response.getWriter();
 
 		switch (request.getParameter("carnet")) {
-		case "save":
-			response.sendRedirect("save.html");
-			break;
-		case "find":
-			response.sendRedirect("find.html");
-			break;
-		case "list":
-			request.setAttribute("contacts", model.contacts_list());
-			request.getServletContext().getRequestDispatcher("/show_contacts.jsp").forward(request,response);
-			break;
-		case "update":
-			response.sendRedirect("update.html");
-			break;
-		case "delete":
-			response.sendRedirect("delete.html");
-		default:
-			out.print("<h1>404 ^^</h1>");
-			break;
+			case "save":
+				response.sendRedirect("save.html");
+				break;
+				
+			case "find":
+				response.sendRedirect("find.html");
+				break;
+				
+			case "list":
+				request.setAttribute("contacts", model.contacts_list());
+				request.getServletContext().getRequestDispatcher("/show_contacts.jsp").forward(request,response);
+				break;
+				
+			case "update":
+				response.sendRedirect("update.html");
+				break;
+				
+			case "delete":
+				response.sendRedirect("delete.html");
+				break;
+				
+			default:
+				out.print("<h1>404 ^^</h1>");
+				break;
 		}
 	}
-	
-
 }
