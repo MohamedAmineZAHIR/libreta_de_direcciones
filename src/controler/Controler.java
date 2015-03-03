@@ -37,9 +37,7 @@ public class Controler extends HttpServlet {
 		response.setContentType("text/html");
 		out = response.getWriter();
 		
-		String choice = request.getParameter("submit");
-		
-		switch (choice) {
+		switch (request.getParameter("submit")) {
 		case "Enregistrer":
 			model.save_contact(request.getParameter("first_name"), 
 					request.getParameter("family_name"), 
@@ -55,14 +53,14 @@ public class Controler extends HttpServlet {
 			break;
 			
 		case "Mise à jour":
-			
+			model.update(request.getParameter("first_name"), request.getParameter("family_name"), 
+					request.getParameter("column"), request.getParameter("value"));
+			response.sendRedirect("index.html");
 			break;
 			
 		default:
 			break;
 		}
-		
-		out.println("Choice " + choice);
 	}
 
 	/**
@@ -74,10 +72,7 @@ public class Controler extends HttpServlet {
 		response.setContentType("text/html");
 		out = response.getWriter();
 
-		String choix = request.getParameter("carnet");
-		out.println("Choix " + choix);
-
-		switch (choix) {
+		switch (request.getParameter("carnet")) {
 		case "save":
 			response.sendRedirect("save.html");
 			break;
