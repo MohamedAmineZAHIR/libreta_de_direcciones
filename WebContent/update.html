@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="View1.jsp">
+	<form action="Controler" method="get">
 	<fieldset>
 		<legend><h1>Mise à jour</h1></legend>
 		<table>
+			<tr><td>Prénom:</td><td><input name="first_name" /></td></tr>
 			<tr><td>Nom:*</td><td><input name="family_name" /></td></tr>
-			<tr><td>Champ:</td><td><select><option>Prénom</option><option>Nom</option><option>Adresse</option><option>Tel</option></select></td></tr>
-			<tr><td>Valeur:</td><td><input name="new_value" /></td></tr>
-			<tr><td></td><td><input type="submit" value="Envoyer" /></td></tr>
+			<tr><td>Champ:</td><td><select name="column"><option>first_name</option><option>family_name</option><option>adress</option><option>phone</option></select></td></tr>
+			<tr><td>Valeur:</td><td><input name="value" /></td></tr>
+			<tr><td></td><td><input type="submit" name="submit" value="Mise à jour" /></td></tr>
 		</table>
 	</fieldset>
 	</form>
