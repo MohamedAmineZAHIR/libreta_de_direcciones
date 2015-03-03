@@ -57,6 +57,10 @@ public class Controler extends HttpServlet {
 					request.getParameter("column"), request.getParameter("value"));
 			response.sendRedirect("index.html");
 			break;
+		
+		case "Supprimer":
+			model.delete(request.getParameter("first_name"), request.getParameter("family_name"));
+			response.sendRedirect("index.html");
 			
 		default:
 			break;
@@ -86,6 +90,8 @@ public class Controler extends HttpServlet {
 		case "update":
 			response.sendRedirect("update.html");
 			break;
+		case "delete":
+			response.sendRedirect("delete.html");
 		default:
 			out.print("<h1>404 ^^</h1>");
 			break;
