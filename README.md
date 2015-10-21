@@ -39,3 +39,7 @@ Le projet est structuré de la façon suivante :
     	• show_contacts.jsp
 
     screen_shot/ -----------------------> Ce projet contient des images -captures d'écran- pour voir en gros à quoi ressemble le résultat finale
+    
+    
+    
+    Le chef de projet qui m'a demandé ce travail l'a jugé à 12/20.
